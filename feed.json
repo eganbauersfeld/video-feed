@@ -1,1 +1,55 @@
-{ "date": "2026-11-25", "videos": [] }
+{
+  "date": "2026-11-25",
+  "videos": [
+    {
+      "id": "gicEOsFtMxw",
+      "title": "I Tested The World's Most Dangerous Animals",
+      "channel": "Mark Rober",
+      "category": "Engineering",
+      "published": "2026-11-21T14:00:14Z",
+      "thumb": "https://i.ytimg.com/vi/gicEOsFtMxw/hqdefault.jpg",
+      "seconds": 2048,
+      "live": false
+    },
+    {
+      "id": "-Cd_JmKG1SM",
+      "title": "I've Been Keeping This A Secret",
+      "channel": "Marques Brownlee",
+      "category": "Tech",
+      "published": "2026-11-25T18:32:40Z",
+      "thumb": "https://i.ytimg.com/vi/-Cd_JmKG1SM/hqdefault.jpg",
+      "seconds": 1051,
+      "live": false
+    },
+    {
+      "id": "cc5C8hRblBY",
+      "title": "I'm Starting Over",
+      "channel": "Marques Brownlee",
+      "category": "Tech",
+      "published": "2026-11-23T21:10:51Z",
+      "thumb": "https://i.ytimg.com/vi/cc5C8hRblBY/hqdefault.jpg",
+      "seconds": 1296,
+      "live": false
+    },
+    {
+      "id": "WbM7GP7QoEM",
+      "title": "Scientists Said This Wave Was Impossible",
+      "channel": "Veritasium",
+      "category": "Learning",
+      "published": "2026-11-25T14:00:52Z",
+      "thumb": "https://i.ytimg.com/vi/WbM7GP7QoEM/hqdefault.jpg",
+      "seconds": 1684,
+      "live": false
+    },
+    {
+      "id": "uXuQF_PPg5U",
+      "title": "Randomness is a lie. Let me explain",
+      "channel": "Veritasium",
+      "category": "Learning",
+      "published": "2026-11-18T20:29:44Z",
+      "thumb": "https://i.ytimg.com/vi/uXuQF_PPg5U/hqdefault.jpg",
+      "seconds": 2328,
+      "live": false
+    }
+  ]
+}
