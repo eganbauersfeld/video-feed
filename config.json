@@ -1,0 +1,13 @@
+{
+  "dailyCount": 8,
+  "minSeconds": 180,
+  "maxAgeDays": 14,
+  "perChannelMax": 2,
+  "blockKeywords": ["full episode", "season", "episode", "clip", "scene", "trailer", "late show", "tonight show", "snl"],
+  "categories": { "Engineering": 3, "Tech": 2, "Learning": 2, "Fun": 1 },
+  "channels": [
+    { "id": "UCY1kMZp36IQSyNx_9h4mpCg", "name": "Mark Rober", "category": "Engineering" },
+    { "id": "UCBJycsmduvYEL83R_U4JriQ", "name": "Marques Brownlee", "category": "Tech" },
+    { "id": "UCHnyfMqiRRG1u-2MsSQLbXA", "name": "Veritasium", "category": "Learning" }
+  ]
+}
