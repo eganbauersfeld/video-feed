@@ -21,6 +21,9 @@ export function createYouTube(key, cap) {
         used = cap; // Google's daily quota is gone: make every later call stop immediately
         throw new QuotaExceeded("YouTube daily quota used up (resets at midnight Pacific)");
       }
+      if (res.status === 429 && path === "search") {
+        throw new QuotaExceeded("YouTube search limit reached for today; skipping the remaining searches");
+      }
       throw new Error(`${path} ${res.status}: ${body.replace(key, "***").slice(0, 300)}`);
     }
     return res.json();
