@@ -204,11 +204,14 @@ export async function gather({ yt, cfg, threads, today, now, state, isSeen, log 
   }
 
   const catalogThreads = threads.filter((t) => !cfg.youtube.noBackCatalogThreads.includes(t.id));
-  catalogLoop: for (const t of catalogThreads) {
+  let quotaOut = false;
+  for (const t of catalogThreads) {
     const roster = Object.entries(rosters[t.id] || {}).filter(([, r]) => r.rostered).map(([id]) => id);
     const chans = [...new Set([...(seedIds[t.id] || []), ...roster])];
+    // Out of quota? Stop scanning, but still use what's already cached.
     for (const id of chans) {
-      try { await scanCatalog(id); } catch (e) { if (stop(e)) break catalogLoop; }
+      if (quotaOut) break;
+      try { await scanCatalog(id); } catch (e) { if (stop(e)) quotaOut = true; }
     }
     const min = Math.max(cfg.youtube.minSeconds, t.minMinutes * 60);
     const pool = chans.flatMap((cid) =>

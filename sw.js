@@ -1,5 +1,5 @@
 // Minimal service worker: caches the page shell and today's feed.json.
-const VERSION = "feed-v2";
+const VERSION = "feed-v3";
 const SHELL = ["./", "index.html", "app.js", "style.css", "manifest.json", "icons/icon-192.png", "icons/icon-512.png", "icons/apple-touch-icon.png"];
 
 self.addEventListener("install", (e) => {
@@ -29,14 +29,11 @@ self.addEventListener("fetch", (e) => {
     return;
   }
 
-  // Shell: serve from cache, refresh in the background.
+  // Shell: network first (so updates show right away), cached copy when offline.
   e.respondWith(
-    caches.match(e.request, { ignoreSearch: true }).then((hit) => {
-      const net = fetch(e.request).then((res) => {
-        if (res.ok) { const copy = res.clone(); caches.open(VERSION).then((c) => c.put(e.request, copy)); }
-        return res;
-      }).catch(() => hit);
-      return hit || net;
-    }),
+    fetch(e.request, { cache: "no-cache" }).then((res) => {
+      if (res.ok) { const copy = res.clone(); caches.open(VERSION).then((c) => c.put(e.request, copy)); }
+      return res;
+    }).catch(() => caches.match(e.request, { ignoreSearch: true })),
   );
 });

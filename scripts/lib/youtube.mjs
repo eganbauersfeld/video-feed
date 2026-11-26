@@ -17,6 +17,10 @@ export function createYouTube(key, cap) {
     const res = await fetch(url);
     if (!res.ok) {
       const body = await res.text();
+      if (res.status === 403 && /quotaExceeded|dailyLimitExceeded/.test(body)) {
+        used = cap; // Google's daily quota is gone: make every later call stop immediately
+        throw new QuotaExceeded("YouTube daily quota used up (resets at midnight Pacific)");
+      }
       throw new Error(`${path} ${res.status}: ${body.replace(key, "***").slice(0, 300)}`);
     }
     return res.json();

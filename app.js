@@ -315,5 +315,12 @@
   document.addEventListener("visibilitychange", () => { if (!document.hidden && $("watch-view").hidden) load(); });
   load();
 
-  if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js").catch(() => {});
+  if ("serviceWorker" in navigator) {
+    // When a new version takes over, reload once so you see it immediately (not mid-video).
+    const hadController = !!navigator.serviceWorker.controller;
+    navigator.serviceWorker.addEventListener("controllerchange", () => {
+      if (hadController && $("watch-view").hidden) location.reload();
+    });
+    navigator.serviceWorker.register("sw.js", { updateViaCache: "none" }).catch(() => {});
+  }
 })();
