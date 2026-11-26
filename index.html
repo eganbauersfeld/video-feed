@@ -24,13 +24,19 @@
           <div class="meter-label" id="day-label">Today</div>
           <div class="meter-used" id="used-label"></div>
         </div>
-        <div class="meter-left"><span id="left-num">–</span><span class="unit"> min left</span></div>
+        <button type="button" class="meter-left" id="meter-left" title="Lower today's limit"><span id="left-num">–</span><span class="unit"> min left</span></button>
       </div>
       <div class="bar"><div class="bar-fill" id="bar-fill"></div></div>
     </div>
   </header>
 
   <main id="feed-view">
+    <div class="choose" id="choose" hidden>
+      <h1 id="choose-title">How much today?</h1>
+      <p class="choose-sub" id="choose-sub"></p>
+      <div class="choose-options" id="choose-options"></div>
+      <button type="button" class="choose-cancel" id="choose-cancel" hidden>Keep it as is</button>
+    </div>
     <div class="done" id="done" hidden>
       <p class="done-nudge" id="done-nudge"></p>
       <p class="done-note">Done for today. Feed reopens tomorrow.</p>

@@ -43,6 +43,7 @@ Every day at about 5am Denver time, the **Refresh feed** GitHub Action runs `scr
 
 ### The page
 
+- **Start of the day:** pick 20, 30, 60 or 75 minutes. The calendar's suggestion is highlighted. Later you can lower it by tapping the minutes-left number, but never raise it.
 - **Top:** the nudge, then the minute meter. It turns amber at 80% and red at 100%. It counts only seconds actually played (YouTube IFrame API), stored on each device per local date, and resets at midnight.
 - **At 100%:** the current video can finish, then every other pick greys out and the nudge becomes the main message. There's no override.
 - **Watching:** a pick opens on its own view with a youtube-nocookie embed. Related videos are off, autoplay is off, and the title links and end screen are covered. Nothing on the page links out to youtube.com.

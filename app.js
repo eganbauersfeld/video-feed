@@ -18,14 +18,23 @@
 
   let feed = null;
   let today = localDay();
+  const OPTIONS = [20, 30, 60, 75]; // daily minute choices
   const k = () => ({
+    budget: `budget:${today}`,      // minutes chosen for today
     watched: `watch:${today}`,      // seconds actually played today
     played: `played:${today}`,      // video ids started today
     finishing: `finishing:${today}`, // the video allowed to finish after the budget ran out
   });
 
   const watchedSec = () => store.get(k().watched, 0);
-  const budgetSec = () => (feed?.budgetMinutes ?? 30) * 60;
+  const chosenMin = () => store.get(k().budget, null);
+  const budgetMin = () => chosenMin() ?? feed?.budgetMinutes ?? 30;
+  const budgetSec = () => budgetMin() * 60;
+  // The option closest to what the calendar suggests (taper can land between options).
+  const suggestedMin = () => {
+    const s = feed?.budgetMinutes ?? 30;
+    return OPTIONS.reduce((best, o) => (Math.abs(o - s) < Math.abs(best - s) ? o : best), OPTIONS[0]);
+  };
   const fraction = () => watchedSec() / budgetSec();
   const isLocked = () => fraction() >= 1;
 
@@ -43,13 +52,13 @@
   function renderMeter() {
     const f = fraction();
     const usedMin = Math.floor(watchedSec() / 60);
-    const budgetMin = feed?.budgetMinutes ?? 30;
     const left = Math.max(0, Math.ceil((budgetSec() - watchedSec()) / 60));
     const day = DAY_NAMES[feed?.dayType] || "Today";
     const events = feed?.eventCount;
     $("day-label").textContent = events == null ? day : `${day}, ${events} event${events === 1 ? "" : "s"}`;
-    $("used-label").textContent = `${usedMin} of ${budgetMin} min`;
-    $("left-num").textContent = left;
+    const chosen = chosenMin() !== null;
+    $("used-label").textContent = chosen ? `${usedMin} of ${budgetMin()} min` : "Pick today's minutes";
+    $("left-num").textContent = chosen ? left : "–";
     $("bar-fill").style.width = `${Math.min(100, f * 100)}%`;
     document.body.classList.toggle("amber", f >= 0.8 && f < 1);
     document.body.classList.toggle("red", f >= 1);
@@ -64,12 +73,60 @@
     }
   }
 
+  // ---------- Daily minutes picker ----------
+  // mode "start": first open of the day, all options. mode "lower": only options below today's choice.
+  let choosing = null;
+  function renderChoose() {
+    const box = $("choose");
+    box.hidden = !choosing;
+    if (!choosing) return;
+    const lower = choosing === "lower";
+    const current = chosenMin();
+    const opts = lower ? OPTIONS.filter((o) => o < current) : OPTIONS;
+    const day = (DAY_NAMES[feed?.dayType] || "Today").toLowerCase().replace(" day", "");
+    $("choose-title").textContent = lower ? "Lower today's limit?" : "How much today?";
+    $("choose-sub").textContent = lower
+      ? "You can go lower, not higher."
+      : `Suggested ${suggestedMin()} min for a ${day} day. You can lower it later, not raise it.`;
+    $("choose-cancel").hidden = !lower;
+    const wrap = $("choose-options");
+    wrap.textContent = "";
+    for (const o of opts) {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.className = "opt" + (!lower && o === suggestedMin() ? " suggested" : "");
+      b.innerHTML = `${o}<small>${!lower && o === suggestedMin() ? "suggested" : "min"}</small>`;
+      b.addEventListener("click", () => {
+        store.set(k().budget, o);
+        choosing = null;
+        renderFeed();
+      });
+      wrap.append(b);
+    }
+  }
+
+  $("choose-cancel").addEventListener("click", () => { choosing = null; renderFeed(); });
+  $("meter-left").addEventListener("click", () => {
+    const current = chosenMin();
+    if (current === null || !$("watch-view").hidden || !OPTIONS.some((o) => o < current)) return;
+    choosing = "lower";
+    renderFeed();
+    window.scrollTo(0, 0);
+  });
+
   // ---------- Feed ----------
   function renderFeed() {
+    if (chosenMin() === null && feed) choosing = "start";
     renderMeter();
-    const locked = isLocked();
+    renderChoose();
     const list = $("picks");
     list.textContent = "";
+    if (choosing) {
+      $("done").hidden = true;
+      $("note").hidden = true;
+      return;
+    }
+    const locked = isLocked();
     $("done").hidden = !locked;
     if (locked) $("done-nudge").textContent = showNudge ? feed.nudge.lines.done : "Go do something good.";
 
@@ -189,7 +246,7 @@
 
   async function openWatch(id) {
     const pick = feed?.picks?.find((p) => p.videoId === id);
-    const allowed = pick && (!isLocked() || store.get(k().finishing, null) === id);
+    const allowed = pick && chosenMin() !== null && (!isLocked() || store.get(k().finishing, null) === id);
     if (!allowed) { location.hash = ""; return; }
 
     $("feed-view").hidden = true;
