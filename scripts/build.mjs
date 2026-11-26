@@ -14,6 +14,7 @@ import { pickNudge, targetSlot } from "./lib/nudges.mjs";
 import { judgeWithApi, cleanPicks, SYSTEM, NUDGE_SYSTEM, threadPrompt, nudgePrompt } from "./lib/judge.mjs";
 import { finish } from "./lib/finish.mjs";
 import { judgeWithRules } from "./lib/rules-judge.mjs";
+import { resolveMissing } from "./lib/resolve.mjs";
 
 const log = (...a) => console.log(...a);
 const mode = process.env.JUDGE || cfg.judge.mode;
@@ -44,6 +45,10 @@ const threadsFile = await readJson("threads.json");
 const rules = await readJson("rules.json", { threads: {} });
 const threads = threadsFile.threads.map((t) => ({ ...t, extraSearches: rules.threads?.[t.id]?.moreSearches || [] }));
 const channels = await readJson("channels.json", {});
+const yt = createYouTube(process.env.YT_API_KEY, +process.env.YT_UNIT_CAP || cfg.youtube.dailyUnitCap);
+const newSeeds = await resolveMissing(yt, [...new Set(threads.flatMap((t) => t.seedChannels))], channels, log)
+  .catch((e) => { log(`Seed lookup stopped: ${e.message}`); return []; });
+if (newSeeds.length) await writeJson("channels.json", channels);
 const seedIds = Object.fromEntries(threads.map((t) => [t.id, t.seedChannels.map((n) => channels[n]?.id).filter(Boolean)]));
 const state = {
   qstate: await readJson("queries.json", {}),
@@ -52,9 +57,9 @@ const state = {
   judged: await readJson("cache/judged.json", {}),
   rosters: await readJson("rosters.json", {}),
   seedIds,
+  blockChannels: rules.blockChannels || [],
 };
 const isSeen = await loadSeenChecker(await readJson("seen.json", {}), process.env.HISTORY_SALT, log);
-const yt = createYouTube(process.env.YT_API_KEY, +process.env.YT_UNIT_CAP || cfg.youtube.dailyUnitCap);
 const candidates = await gather({ yt, cfg, threads, today, now, state, isSeen, log });
 for (const t of threads) log(`  ${t.id}: ${candidates[t.id].length} candidates`);
 log(`YouTube units used: ${yt.used}`);

@@ -5,13 +5,53 @@
       "id": "design-craft",
       "name": "Beautiful design & making",
       "type": "stream",
+      "priority": 2,
       "want": "Calm, well-shot videos of a person designing or making a physical object start to finish: product and industrial design, furniture, leatherwork, shoemaking, small-space architecture. Process shown on camera, design decisions explained, aesthetic payoff at the end.",
       "avoid": "Quick craft hacks, '5-minute crafts' style, product unboxings or reviews, home tours with no making, DIY fails, rambling vlogs with little work on screen",
       "minMinutes": 6,
       "maxMinutes": 25,
       "perDay": 2,
-      "seedChannels": ["Scott Yu-Jan", "Craighill", "Blacktail Studio", "Ken Kataoka", "Never Too Small", "Studio Flow", "Man Made"],
+      "seedChannels": ["Scott Yu-Jan", "Craighill", "Ken Kataoka", "Never Too Small", "Studio Flow", "Man Made"],
       "seedSearches": ["designing a product from scratch", "industrial design process prototype", "making handmade leather shoes", "woodworking build beautiful table", "small apartment design tour architect"]
+    },
+    {
+      "id": "design-ideas",
+      "name": "How things are designed",
+      "type": "stream",
+      "priority": 2,
+      "want": "Design thinking beyond making things by hand: industrial designers explaining their process and sketches, why everyday objects, buildings, cities, interfaces and type look the way they do, design history and critiques of good and bad design. Clear point of view, well shot, leaves me with a way of seeing I can use in my own design work.",
+      "avoid": "Software tutorials and 'learn Figma in 10 minutes', logo speed-art, portfolio-review drama, 'design tier lists', dropshipping product 'designs', AI image generator hype, home decor hauls",
+      "minMinutes": 6,
+      "maxMinutes": 25,
+      "perDay": 1,
+      "seedChannels": ["Eric Strebel", "Linus Boman", "Stewart Hicks", "Dami Lee", "Juxtopposed", "The B1M"],
+      "seedSearches": ["industrial designer sketching process", "why this object is designed this way", "the design of everyday things explained", "architect explains why this building works", "history of a typeface"]
+    },
+    {
+      "id": "business-strategy",
+      "name": "How companies win",
+      "type": "stream",
+      "priority": 2,
+      "want": "Clear, researched breakdowns of how real companies and products win or fail: strategy, pricing, operations, supply chains, business models, founder decisions. Teaches a way of thinking I can reuse, backed by numbers and history.",
+      "avoid": "Hustle gurus, podcast clips, 'how I made $X in 30 days', passive income, crypto, stock tips, 'this stock will explode', drama about CEOs with no analysis, AI-voiceover business channels",
+      "minMinutes": 8,
+      "maxMinutes": 30,
+      "perDay": 1,
+      "seedChannels": ["The Modern MBA", "Company Man", "PolyMatter", "Wendover Productions"],
+      "seedSearches": ["why this company failed explained", "business model breakdown", "how this company actually makes money", "the strategy behind"]
+    },
+    {
+      "id": "claude-building",
+      "name": "Building with Claude",
+      "type": "stream",
+      "priority": 2,
+      "want": "Practical videos that make me better at building things with Claude, Claude Code and other AI coding tools: real projects built start to finish, workflows, prompting and agent techniques, talks from Anthropic and from experienced builders. Shows the actual screen and the actual result.",
+      "avoid": "AI hype and doom, 'AI will replace you', 'make $10k with ChatGPT', prompt-pack sellers, AI news roundups, model-vs-model benchmark clickbait, AI-voiceover channels, thumbnail-face 'this changes everything'",
+      "minMinutes": 5,
+      "maxMinutes": 30,
+      "perDay": 1,
+      "seedChannels": ["Anthropic", "IndyDevDan", "Fireship"],
+      "seedSearches": ["claude code workflow", "building an app with claude code", "claude code tips from real projects", "anthropic claude tutorial"]
     },
     {
       "id": "clever-builds",
@@ -22,8 +62,8 @@
       "minMinutes": 6,
       "maxMinutes": 22,
       "perDay": 1,
-      "seedChannels": ["Lucas-Dynamics", "Brick Technology", "Integza", "Stuff Made Here", "Michael Reeves", "Tom Stanton", "From Scratch"],
-      "seedSearches": ["I built a machine that", "engineering a lego mechanism", "3d printed engine build", "homemade robot build test", "I engineered a"]
+      "seedChannels": ["Lucas-Dynamics", "Integza", "Stuff Made Here", "Michael Reeves", "Tom Stanton", "From Scratch"],
+      "seedSearches": ["I built a machine that", "mechanical design prototype test", "3d printed engine build", "homemade robot build test", "I engineered a"]
     },
     {
       "id": "science-aha",
@@ -65,6 +105,7 @@
       "id": "small-business",
       "name": "How small businesses actually work",
       "type": "stream",
+      "priority": 2,
       "want": "A specific real small business (shop, restaurant, trade, product brand) broken down with real numbers: costs, margins, what went wrong, how the owner fixed it.",
       "avoid": "Hustle gurus, Hormozi or podcast clips, 'passive income', dropshipping, crypto, 'how I got rich at 22' with no numbers, Lambo or lifestyle flexing, Shark Tank clips",
       "minMinutes": 8,

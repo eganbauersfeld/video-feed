@@ -34,7 +34,7 @@ jobs:
         run: |
           git config user.name "feed-bot"
           git config user.email "feed-bot@users.noreply.github.com"
-          for f in feed.json seen.json rosters.json queries.json nudges-seen.json candidates.json cache; do
+          for f in channels.json feed.json seen.json rosters.json queries.json nudges-seen.json candidates.json cache; do
             if [ -e "$f" ]; then git add "$f"; fi
           done
           git diff --cached --quiet || git commit -m "Feed for $(TZ=America/Denver date +%F)"

@@ -8,6 +8,7 @@
     "gta", "minecraft", "fortnite", "roblox", "stream highlights", "twitch",
     "top 10", "top ten", "top 5", "tier list", "get rich", "passive income", "side hustle", "dropshipping", "crypto", "ai voice"
   ],
+  "blockChannels": ["Blacktail Studio", "Brick Technology"],
   "clickbait": ["you won't believe", "gone wrong", "shocking", "exposed", "insane", "unbelievable", "crazy", "must see", "won't believe", "the truth about"],
   "threads": {
     "design-craft": {
@@ -15,10 +16,25 @@
       "block": ["hack", "hacks", "5-minute", "5 minute crafts", "diy fails", "unboxing", "haul", "vlog"],
       "moreSearches": ["making a chair start to finish", "designing a lamp from sketch to prototype", "handmade leather wallet process", "architect designs tiny apartment"]
     },
+    "design-ideas": {
+      "boost": ["design", "designed", "designer", "designing", "industrial design", "product design", "sketch", "sketching", "architecture", "architect", "building", "city", "urban", "typography", "typeface", "font", "logo", "interface", "ui", "ux", "history", "bad design", "good design", "redesign", "everyday", "object"],
+      "block": ["figma tutorial", "in 10 minutes", "speed art", "speedart", "portfolio review", "tier list", "midjourney", "haul", "decor", "course"],
+      "moreSearches": ["why good design is invisible", "industrial design process from sketch to product", "how cities are designed explained", "the hidden design of"]
+    },
+    "business-strategy": {
+      "boost": ["company", "companies", "business", "strategy", "business model", "pricing", "supply chain", "logistics", "economics", "failed", "collapse", "rise", "fall", "makes money", "profit", "monopoly", "brand", "founder", "explained"],
+      "block": ["stock tips", "will explode", "passive income", "podcast", "hormozi", "get rich", "millionaire", "crypto", "make money online", "$10k"],
+      "moreSearches": ["how this company dominates its market", "the economics of", "why this brand collapsed", "supply chain explained"]
+    },
+    "claude-building": {
+      "boost": ["claude", "claude code", "anthropic", "agent", "agents", "ai agent", "ai agents", "ai coding", "vibe coding", "agentic", "prompt engineering", "prompting", "mcp", "cursor", "codex", "llm"],
+      "block": ["will replace", "replace you", "make money", "$10k", "prompt pack", "news roundup", "this changes everything", "ai news", "vs chatgpt", "doom", "agi is here"],
+      "moreSearches": ["claude code agents workflow", "building a full app with claude", "advanced claude code techniques", "mcp server tutorial claude"]
+    },
     "clever-builds": {
-      "boost": ["built", "build", "building", "engineered", "engineering", "machine", "robot", "mechanism", "prototype", "cad", "3d printed", "3d print", "3d printing", "motor", "engine", "lego", "invention", "invented", "rocket", "drone", "i made", "designed", "automatic", "contraption"],
+      "boost": ["built", "build", "building", "engineered", "engineering", "machine", "robot", "mechanism", "prototype", "cad", "3d printed", "3d print", "3d printing", "motor", "engine", "invention", "invented", "rocket", "drone", "i made", "designed", "automatic", "contraption"],
       "block": ["aliexpress", "temu", "amazon", "unboxing", "crash test", "destruction", "destroying", "smashing", "part 2", "part 3", "part 4", "sponsored"],
-      "moreSearches": ["I made a machine that", "building a robot that can", "lego machine engineering challenge", "3d printed mechanism invention"]
+      "moreSearches": ["I made a machine that", "building a robot that can", "engineering a mechanism that shouldn't work", "3d printed mechanism invention"]
     },
     "science-aha": {
       "boost": ["physics", "math", "maths", "mathematics", "science", "experiment", "paradox", "puzzle", "equation", "slow motion", "illusion", "proof", "counterintuitive", "theorem", "quantum", "gravity", "fluid", "probability", "geometry", "infinity", "chaos", "optics", "magnet", "magnets"],

@@ -122,6 +122,9 @@ Set `judge.mode` in `config.mjs`.
   - Add a word to a thread's `block` list when junk gets through.
   - Add to `boost` when good videos are missed.
   - Raise `threshold` to get fewer, safer picks.
+  - Add a channel name to `blockChannels` to never see it again.
+
+  New seed channels in `threads.json` are looked up automatically on the next daily run. Threads with `"priority": 2` come first in each round of the feed.
 
   To see what it would pick from the cached back catalogs without using any API quota, run `node scripts/test/rules-preview.mjs`.
 - **`api`:** Claude judges each video against the want/avoid text and writes the "why" lines. It's much better at taste (spotting filler, AI-voiceover channels, old-product reviews) and costs about $0.35–0.75 a day on `claude-opus-5-5`, or about $0.01–0.02 on `claude-haiku-5-5`. It needs `ANTHROPIC_API_KEY`.

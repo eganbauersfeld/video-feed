@@ -232,9 +232,11 @@ export async function gather({ yt, cfg, threads, today, now, state, isSeen, log 
   for (const [tid, list] of Object.entries(byThread)) {
     for (const v of list) if (!owner[v.videoId] || owner[v.videoId].ratio < v.ratio) owner[v.videoId] = { tid, ratio: v.ratio };
   }
+  const blocked = new Set((state.blockChannels || []).map((n) => n.toLowerCase()));
   for (const t of threads) {
     const seen = new Set();
     byThread[t.id] = byThread[t.id]
+      .filter((v) => !blocked.has(String(v.channel).toLowerCase()) && !blocked.has(v.channelId))
       .filter((v) => owner[v.videoId].tid === t.id && !seen.has(v.videoId) && seen.add(v.videoId))
       .sort((a, b) => b.ratio - a.ratio)
       .slice(0, cfg.judge.maxCandidatesPerThread);

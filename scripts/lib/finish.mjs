@@ -19,13 +19,14 @@ export async function finish({ ctx, result, cfg, log, markJudged = true }) {
       rows.push({
         videoId: c.videoId, threadId: t.id, thread: t.name, title: c.title, channel: c.channel,
         channelId: c.channelId, seconds: c.seconds, published: c.published, older: c.source === "older",
-        why: p.why, score: p.score, rank,
+        why: p.why, score: p.score, rank, priority: t.priority ?? 1,
       });
     });
   }
   // Round-robin across threads: every thread's best pick comes before any thread's second pick,
-  // so the part of the list the budget covers spans several threads. Within a round, best score first.
-  rows.sort((a, b) => a.rank - b.rank || b.score - a.score);
+  // so the part of the list the budget covers spans several threads. Within a round, "priority"
+  // threads (the ones that make you better) go first, then best score.
+  rows.sort((a, b) => a.rank - b.rank || b.priority - a.priority || b.score - a.score);
 
   const nudge = ctx.nudge
     ? { id: ctx.nudge.id, minutes: ctx.nudge.minutes, lines: result.nudgeLines || fallbackNudgeLines(ctx.nudge, ctx.warnMinutesLeft, ctx.weather, ctx.today) }
@@ -39,7 +40,7 @@ export async function finish({ ctx, result, cfg, log, markJudged = true }) {
     budgetMinutes: ctx.budgetMinutes,
     weather: ctx.weather,
     nudge,
-    picks: rows.map(({ rank, channelId, ...r }) => r),
+    picks: rows.map(({ rank, channelId, priority, ...r }) => r),
   };
 
   for (const r of rows) seen[r.videoId] = ctx.today;
