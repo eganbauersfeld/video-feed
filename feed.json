@@ -1,10 +1,149 @@
 {
   "date": "2026-11-25",
-  "generatedAt": "2026-11-26T03:42:14.539Z",
+  "generatedAt": "2026-11-26T04:31:48.066Z",
   "dayType": "normal",
   "eventCount": null,
   "budgetMinutes": 30,
-  "weather": null,
-  "nudge": null,
-  "picks": []
+  "weather": {
+    "location": "boulder",
+    "label": "Boulder, CO",
+    "high": 49,
+    "low": 29,
+    "condition": "partly cloudy",
+    "precipChance": 0,
+    "goodWeather": true,
+    "snow": false,
+    "clearNight": true
+  },
+  "nudge": {
+    "id": "sunset",
+    "minutes": 30,
+    "lines": {
+      "normal": "It's 49° and partly cloudy. Idea for today: go watch the sunset.",
+      "warn": "6 min left. Then go watch the sunset.",
+      "done": "It's 49° and partly cloudy. That's today's videos. Go watch the sunset."
+    }
+  },
+  "picks": [
+    {
+      "videoId": "xfXMoGmb74w",
+      "threadId": "design-craft",
+      "thread": "Beautiful design & making",
+      "title": "Paris Architect’s Own Micro Apartment - 31sqm/344sqft",
+      "channel": "NEVER TOO SMALL",
+      "seconds": 494,
+      "published": "2021-09-16T06:30:14Z",
+      "older": true,
+      "why": "One of NEVER TOO SMALL's standouts: 21x its usual views",
+      "score": 10
+    },
+    {
+      "videoId": "PyoBOBDkouE",
+      "threadId": "design-ideas",
+      "thread": "How things are designed",
+      "title": "How to Copy a 3D Object",
+      "channel": "Eric Strebel",
+      "seconds": 776,
+      "published": "2021-08-04T11:00:23Z",
+      "older": true,
+      "why": "One of Eric Strebel's standouts: 32x its usual views",
+      "score": 10
+    },
+    {
+      "videoId": "0vZ_UVLhSQQ",
+      "threadId": "claude-building",
+      "thread": "Building with Claude",
+      "title": "Getting started with Claude.ai",
+      "channel": "Anthropic",
+      "seconds": 319,
+      "published": "2025-12-02T15:55:00Z",
+      "older": true,
+      "why": "One of Anthropic's standouts: 18x its usual views",
+      "score": 10
+    },
+    {
+      "videoId": "yloJi635Ya8",
+      "threadId": "business-strategy",
+      "thread": "How companies win",
+      "title": "Apple's Money Problem (& Why It Won't Buy Netflix)",
+      "channel": "PolyMatter",
+      "seconds": 484,
+      "published": "2018-02-23T16:00:26Z",
+      "older": true,
+      "why": "One of PolyMatter's standouts: 20x its usual views",
+      "score": 9.8
+    },
+    {
+      "videoId": "U9uI0dceAws",
+      "threadId": "wild-projects",
+      "thread": "Wild projects vlogs",
+      "title": "Solo Climbing and Camping in a GIANT Strangler Fig Tree",
+      "channel": "Noah Kane",
+      "seconds": 1582,
+      "published": "2026-06-02T19:14:59Z",
+      "older": true,
+      "why": "One of Noah Kane's standouts: 52x its usual views",
+      "score": 10
+    },
+    {
+      "videoId": "IgAApJO9D4M",
+      "threadId": "sports-stories",
+      "thread": "Sports stories",
+      "title": "China Ruled Table Tennis for 25 Years. Now It’s Cracking",
+      "channel": "TheSystematicPlayer",
+      "seconds": 1510,
+      "published": "2026-10-21T15:11:18Z",
+      "older": true,
+      "why": "One of TheSystematicPlayer's standouts: 7.1x its usual views",
+      "score": 10
+    },
+    {
+      "videoId": "qIcisMdYpo0",
+      "threadId": "watch-dealing",
+      "thread": "Watch dealing",
+      "title": "Rado: The Watch That Became a Status Symbol 5,000 Miles From Home",
+      "channel": "Mr. Watchman",
+      "seconds": 1567,
+      "published": "2026-09-02T23:40:27Z",
+      "older": true,
+      "why": "One of Mr. Watchman's standouts: 11x its usual views",
+      "score": 10
+    },
+    {
+      "videoId": "mnCmvxt2jn8",
+      "threadId": "clever-builds",
+      "thread": "Clever builds (tight edits)",
+      "title": "I built an IONIC PLASMA THRUSTER (Best Design)",
+      "channel": "Integza",
+      "seconds": 551,
+      "published": "2023-08-15T12:07:35Z",
+      "older": true,
+      "why": "One of Integza's standouts: 4.9x its usual views",
+      "score": 9.8
+    },
+    {
+      "videoId": "cqidD7kVnxY",
+      "threadId": "science-aha",
+      "thread": "Science & math aha",
+      "title": "World's Fastest Pitch - Supersonic Baseball Cannon - Smarter Every Day 242",
+      "channel": "SmarterEveryDay",
+      "seconds": 1438,
+      "published": "2020-09-06T15:38:12Z",
+      "older": true,
+      "why": "One of SmarterEveryDay's standouts: 7.3x its usual views",
+      "score": 9.6
+    },
+    {
+      "videoId": "txoZacPFLZg",
+      "threadId": "design-craft",
+      "thread": "Beautiful design & making",
+      "title": "Why most scissors suck (and how we fixed it)",
+      "channel": "Craighill",
+      "seconds": 709,
+      "published": "2025-09-18T02:04:32Z",
+      "older": true,
+      "why": "One of Craighill's standouts: 21x its usual views",
+      "score": 9.8
+    }
+  ]
 }

@@ -1,0 +1,70 @@
+{
+  "design-craft": {
+    "UC_zQ777U6YTyatP3P1wi3xw": {
+      "name": "NEVER TOO SMALL",
+      "accepted": 1,
+      "rostered": false
+    },
+    "UCc6L2C09Gs6euMoUyqiz02Q": {
+      "name": "Craighill",
+      "accepted": 1,
+      "rostered": false
+    }
+  },
+  "design-ideas": {
+    "UCFzr6ae9Uv-a_tCmHmkw49g": {
+      "name": "Eric Strebel",
+      "accepted": 1,
+      "rostered": false
+    }
+  },
+  "claude-building": {
+    "UCrDwWp7EBBv4NwvScIpBDOA": {
+      "name": "Anthropic",
+      "accepted": 1,
+      "rostered": false
+    }
+  },
+  "business-strategy": {
+    "UCgNg3vwj3xt7QOrcIDaHdFg": {
+      "name": "PolyMatter",
+      "accepted": 1,
+      "rostered": false
+    }
+  },
+  "wild-projects": {
+    "UCIiu3VznvR_JL4GLtTVHQgw": {
+      "name": "Noah Kane",
+      "accepted": 1,
+      "rostered": false
+    }
+  },
+  "sports-stories": {
+    "UCa1Xt9AmA9K7aqg4hgXV_3A": {
+      "name": "TheSystematicPlayer",
+      "accepted": 1,
+      "rostered": false
+    }
+  },
+  "watch-dealing": {
+    "UCv2sL-VAAMN8piWatCR_SdA": {
+      "name": "Mr. Watchman",
+      "accepted": 1,
+      "rostered": false
+    }
+  },
+  "clever-builds": {
+    "UC2avWDLN1EI3r1RZ_dlSxCw": {
+      "name": "Integza",
+      "accepted": 1,
+      "rostered": false
+    }
+  },
+  "science-aha": {
+    "UC6107grRI4m0o2-emgoDnAA": {
+      "name": "SmarterEveryDay",
+      "accepted": 1,
+      "rostered": false
+    }
+  }
+}
