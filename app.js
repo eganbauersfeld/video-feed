@@ -74,29 +74,23 @@
   }
 
   // ---------- Daily minutes picker ----------
-  // mode "start": first open of the day, all options. mode "lower": only options below today's choice.
+  // Shown once per day. The choice is locked until midnight: no raising, no lowering, no undo.
   let choosing = null;
   function renderChoose() {
     const box = $("choose");
     box.hidden = !choosing;
     if (!choosing) return;
-    const lower = choosing === "lower";
-    const current = chosenMin();
-    const opts = lower ? OPTIONS.filter((o) => o < current) : OPTIONS;
     const day = (DAY_NAMES[feed?.dayType] || "Today").toLowerCase().replace(" day", "");
-    $("choose-title").textContent = lower ? "Lower today's limit?" : "How much today?";
-    $("choose-sub").textContent = lower
-      ? "You can go lower, not higher."
-      : `Suggested ${suggestedMin()} min for a ${day} day. You can lower it later, not raise it.`;
-    $("choose-cancel").hidden = !lower;
+    $("choose-sub").textContent = `Suggested ${suggestedMin()} min for a ${day} day. This is locked in until tomorrow.`;
     const wrap = $("choose-options");
     wrap.textContent = "";
-    for (const o of opts) {
+    for (const o of OPTIONS) {
       const b = document.createElement("button");
       b.type = "button";
-      b.className = "opt" + (!lower && o === suggestedMin() ? " suggested" : "");
-      b.innerHTML = `${o}<small>${!lower && o === suggestedMin() ? "suggested" : "min"}</small>`;
+      b.className = "opt" + (o === suggestedMin() ? " suggested" : "");
+      b.innerHTML = `${o}<small>${o === suggestedMin() ? "suggested" : "min"}</small>`;
       b.addEventListener("click", () => {
+        if (chosenMin() !== null) return; // already chosen (e.g. in another tab)
         store.set(k().budget, o);
         choosing = null;
         renderFeed();
@@ -105,18 +99,9 @@
     }
   }
 
-  $("choose-cancel").addEventListener("click", () => { choosing = null; renderFeed(); });
-  $("meter-left").addEventListener("click", () => {
-    const current = chosenMin();
-    if (current === null || !$("watch-view").hidden || !OPTIONS.some((o) => o < current)) return;
-    choosing = "lower";
-    renderFeed();
-    window.scrollTo(0, 0);
-  });
-
   // ---------- Feed ----------
   function renderFeed() {
-    if (chosenMin() === null && feed) choosing = "start";
+    choosing = chosenMin() === null && feed ? "start" : null;
     renderMeter();
     renderChoose();
     const list = $("picks");

@@ -1,5 +1,5 @@
 // Minimal service worker: caches the page shell and today's feed.json.
-const VERSION = "feed-v3";
+const VERSION = "feed-v4";
 const SHELL = ["./", "index.html", "app.js", "style.css", "manifest.json", "icons/icon-192.png", "icons/icon-512.png", "icons/apple-touch-icon.png"];
 
 self.addEventListener("install", (e) => {
