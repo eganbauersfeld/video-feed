@@ -4,7 +4,10 @@
     "lastUsed": {
       "designing a product from scratch|relevance": "2026-11-25",
       "industrial design process prototype|relevance": "2026-11-25",
-      "making handmade leather shoes|relevance": "2026-11-25"
+      "making handmade leather shoes|relevance": "2026-11-25",
+      "designing a product from scratch|viewCount": "2026-11-26",
+      "industrial design process prototype|viewCount": "2026-11-26",
+      "making handmade leather shoes|viewCount": "2026-11-26"
     }
   },
   "design-ideas": {
@@ -12,7 +15,10 @@
     "lastUsed": {
       "industrial designer sketching process|relevance": "2026-11-25",
       "why this object is designed this way|relevance": "2026-11-25",
-      "the design of everyday things explained|relevance": "2026-11-25"
+      "the design of everyday things explained|relevance": "2026-11-25",
+      "industrial designer sketching process|viewCount": "2026-11-26",
+      "why this object is designed this way|viewCount": "2026-11-26",
+      "the design of everyday things explained|viewCount": "2026-11-26"
     }
   },
   "business-strategy": {
@@ -20,7 +26,10 @@
     "lastUsed": {
       "why this company failed explained|relevance": "2026-11-25",
       "business model breakdown|relevance": "2026-11-25",
-      "how this company actually makes money|relevance": "2026-11-25"
+      "how this company actually makes money|relevance": "2026-11-25",
+      "why this company failed explained|viewCount": "2026-11-26",
+      "business model breakdown|viewCount": "2026-11-26",
+      "how this company actually makes money|viewCount": "2026-11-26"
     }
   },
   "claude-building": {
@@ -28,7 +37,10 @@
     "lastUsed": {
       "claude code workflow|relevance": "2026-11-25",
       "building an app with claude code|relevance": "2026-11-25",
-      "claude code tips from real projects|relevance": "2026-11-25"
+      "claude code tips from real projects|relevance": "2026-11-25",
+      "claude code workflow|viewCount": "2026-11-26",
+      "building an app with claude code|viewCount": "2026-11-26",
+      "claude code tips from real projects|viewCount": "2026-11-26"
     }
   },
   "clever-builds": {
@@ -36,7 +48,10 @@
     "lastUsed": {
       "I built a machine that|relevance": "2026-11-25",
       "mechanical design prototype test|relevance": "2026-11-25",
-      "3d printed engine build|relevance": "2026-11-25"
+      "3d printed engine build|relevance": "2026-11-25",
+      "I built a machine that|viewCount": "2026-11-26",
+      "mechanical design prototype test|viewCount": "2026-11-26",
+      "3d printed engine build|viewCount": "2026-11-26"
     }
   },
   "science-aha": {
@@ -44,7 +59,10 @@
     "lastUsed": {
       "counterintuitive physics experiment|relevance": "2026-11-25",
       "why does this happen physics explained|relevance": "2026-11-25",
-      "math puzzle with surprising answer|relevance": "2026-11-25"
+      "math puzzle with surprising answer|relevance": "2026-11-25",
+      "counterintuitive physics experiment|viewCount": "2026-11-26",
+      "why does this happen physics explained|viewCount": "2026-11-26",
+      "math puzzle with surprising answer|viewCount": "2026-11-26"
     }
   },
   "wild-projects": {
@@ -52,7 +70,10 @@
     "lastUsed": {
       "building a cabin alone in the woods|relevance": "2026-11-25",
       "fixing an old snowmobile alaska|relevance": "2026-11-25",
-      "camping in a strange place|relevance": "2026-11-25"
+      "camping in a strange place|relevance": "2026-11-25",
+      "building a cabin alone in the woods|viewCount": "2026-11-26",
+      "fixing an old snowmobile alaska|viewCount": "2026-11-26",
+      "camping in a strange place|viewCount": "2026-11-26"
     }
   },
   "story-and-craft-of-film": {
@@ -60,7 +81,10 @@
     "lastUsed": {
       "how we shot this scene behind the scenes|relevance": "2026-11-25",
       "cinematography breakdown|relevance": "2026-11-25",
-      "making of a short film|relevance": "2026-11-25"
+      "making of a short film|relevance": "2026-11-25",
+      "how we shot this scene behind the scenes|viewCount": "2026-11-26",
+      "cinematography breakdown|viewCount": "2026-11-26",
+      "making of a short film|viewCount": "2026-11-26"
     }
   },
   "small-business": {
@@ -68,7 +92,10 @@
     "lastUsed": {
       "small business revenue breakdown owner|relevance": "2026-11-25",
       "how much does a restaurant make|relevance": "2026-11-25",
-      "I tried to save a failing business|relevance": "2026-11-25"
+      "I tried to save a failing business|relevance": "2026-11-25",
+      "small business revenue breakdown owner|viewCount": "2026-11-26",
+      "how much does a restaurant make|viewCount": "2026-11-26",
+      "I tried to save a failing business|viewCount": "2026-11-26"
     }
   },
   "sports-stories": {
@@ -76,7 +103,10 @@
     "lastUsed": {
       "the untold story of athlete|relevance": "2026-11-25",
       "F1 rivalry explained|relevance": "2026-11-25",
-      "table tennis pro story|relevance": "2026-11-25"
+      "table tennis pro story|relevance": "2026-11-25",
+      "the untold story of athlete|viewCount": "2026-11-26",
+      "F1 rivalry explained|viewCount": "2026-11-26",
+      "table tennis pro story|viewCount": "2026-11-26"
     }
   },
   "watch-dealing": {
@@ -84,7 +114,10 @@
     "lastUsed": {
       "flipping a rolex profit|relevance": "2026-11-25",
       "watch dealer negotiation|relevance": "2026-11-25",
-      "is this watch fake dealer|relevance": "2026-11-25"
+      "is this watch fake dealer|relevance": "2026-11-25",
+      "flipping a rolex profit|viewCount": "2026-11-26",
+      "watch dealer negotiation|viewCount": "2026-11-26",
+      "is this watch fake dealer|viewCount": "2026-11-26"
     }
   },
   "tech-reviews": {
@@ -92,7 +125,10 @@
     "lastUsed": {
       "honest review after one month|relevance": "2026-11-25",
       "the problem with this phone|relevance": "2026-11-25",
-      "why this product failed|relevance": "2026-11-25"
+      "why this product failed|relevance": "2026-11-25",
+      "honest review after one month|viewCount": "2026-11-26",
+      "the problem with this phone|viewCount": "2026-11-26",
+      "why this product failed|viewCount": "2026-11-26"
     }
   },
   "big-creators-standouts": {
@@ -100,7 +136,10 @@
     "lastUsed": {
       "MrBeast new video|relevance": "2026-11-25",
       "Jesse James West|relevance": "2026-11-25",
-      "Magnus Midtbø|relevance": "2026-11-25"
+      "Magnus Midtbø|relevance": "2026-11-25",
+      "MrBeast new video|viewCount": "2026-11-26",
+      "Jesse James West|viewCount": "2026-11-26",
+      "Magnus Midtbø|viewCount": "2026-11-26"
     }
   }
 }

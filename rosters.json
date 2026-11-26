@@ -2,11 +2,16 @@
   "design-craft": {
     "UC_zQ777U6YTyatP3P1wi3xw": {
       "name": "NEVER TOO SMALL",
-      "accepted": 1,
+      "accepted": 2,
       "rostered": false
     },
     "UCc6L2C09Gs6euMoUyqiz02Q": {
       "name": "Craighill",
+      "accepted": 1,
+      "rostered": false
+    },
+    "UCAbAsEZ-0LccTNbl8r-3EaQ": {
+      "name": "Scott Yu-Jan",
       "accepted": 1,
       "rostered": false
     }
@@ -14,21 +19,21 @@
   "design-ideas": {
     "UCFzr6ae9Uv-a_tCmHmkw49g": {
       "name": "Eric Strebel",
-      "accepted": 1,
+      "accepted": 2,
       "rostered": false
     }
   },
   "claude-building": {
     "UCrDwWp7EBBv4NwvScIpBDOA": {
       "name": "Anthropic",
-      "accepted": 1,
+      "accepted": 2,
       "rostered": false
     }
   },
   "business-strategy": {
     "UCgNg3vwj3xt7QOrcIDaHdFg": {
       "name": "PolyMatter",
-      "accepted": 1,
+      "accepted": 2,
       "rostered": false
     }
   },
@@ -37,19 +42,24 @@
       "name": "Noah Kane",
       "accepted": 1,
       "rostered": false
+    },
+    "UCMIjEnXruVHtvgSVf6TgfUg": {
+      "name": "Wranglerstar",
+      "accepted": 1,
+      "rostered": false
     }
   },
   "sports-stories": {
     "UCa1Xt9AmA9K7aqg4hgXV_3A": {
       "name": "TheSystematicPlayer",
-      "accepted": 1,
+      "accepted": 2,
       "rostered": false
     }
   },
   "watch-dealing": {
     "UCv2sL-VAAMN8piWatCR_SdA": {
       "name": "Mr. Watchman",
-      "accepted": 1,
+      "accepted": 2,
       "rostered": false
     }
   },
@@ -58,11 +68,37 @@
       "name": "Integza",
       "accepted": 1,
       "rostered": false
+    },
+    "UCtgFBqCne_ttTC7V-lMniBw": {
+      "name": "Alexander'sLaboratory",
+      "accepted": 1,
+      "rostered": false
     }
   },
   "science-aha": {
     "UC6107grRI4m0o2-emgoDnAA": {
       "name": "SmarterEveryDay",
+      "accepted": 2,
+      "rostered": false
+    }
+  },
+  "small-business": {
+    "UCrvhNP_lWuPIP6QZzJmM-bw": {
+      "name": "New York Post",
+      "accepted": 1,
+      "rostered": false
+    }
+  },
+  "story-and-craft-of-film": {
+    "UCBYChBOoVXAenGDYvl5-dAw": {
+      "name": "Dead Sound",
+      "accepted": 1,
+      "rostered": false
+    }
+  },
+  "tech-reviews": {
+    "UCgDqL4yzXb4BflimZaxL4Vg": {
+      "name": "Andrew Ethan Zeng",
       "accepted": 1,
       "rostered": false
     }

@@ -3,9 +3,14 @@
     {
       "id": "sunset",
       "date": "2026-11-25"
+    },
+    {
+      "id": "new-restaurant",
+      "date": "2026-11-26"
     }
   ],
   "cycle": [
-    "sunset"
+    "sunset",
+    "new-restaurant"
   ]
 }
