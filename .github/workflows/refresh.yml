@@ -2,27 +2,40 @@ name: Refresh feed
 
 on:
   schedule:
-    - cron: "17 11 * * *"
+    # 12:00 UTC = 5am Denver in winter (MST), 6am in summer (MDT).
+    - cron: "0 12 * * *"
   workflow_dispatch:
 
 permissions:
   contents: write
 
+concurrency:
+  group: feed
+  cancel-in-progress: false
+
 jobs:
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
-      - run: node scripts/build-feed.mjs
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: node scripts/build.mjs
         env:
           YT_API_KEY: ${{ secrets.YT_API_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GCAL_ICS_URL: ${{ secrets.GCAL_ICS_URL }}
+          HISTORY_SALT: ${{ secrets.HISTORY_SALT }}
       - name: Commit today's feed
         run: |
           git config user.name "feed-bot"
           git config user.email "feed-bot@users.noreply.github.com"
-          git add feed.json history.json
-          git diff --cached --quiet || git commit -m "Feed for $(date -u +%F)"
+          for f in feed.json seen.json rosters.json queries.json nudges-seen.json candidates.json cache; do
+            if [ -e "$f" ]; then git add "$f"; fi
+          done
+          git diff --cached --quiet || git commit -m "Feed for $(TZ=America/Denver date +%F)"
           git push

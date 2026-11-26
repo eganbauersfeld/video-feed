@@ -1,0 +1,5 @@
+node_modules/
+.local/
+# Raw Google Takeout exports stay on your computer; only hashes are committed.
+history/watch-history.json
+history/watch-history.html

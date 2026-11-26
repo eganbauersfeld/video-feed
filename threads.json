@@ -1,0 +1,127 @@
+{
+  "dailyMinutes": 75,
+  "threads": [
+    {
+      "id": "design-craft",
+      "name": "Beautiful design & making",
+      "type": "stream",
+      "want": "Calm, well-shot videos of a person designing or making a physical object start to finish: product and industrial design, furniture, leatherwork, shoemaking, small-space architecture. Process shown on camera, design decisions explained, aesthetic payoff at the end.",
+      "avoid": "Quick craft hacks, '5-minute crafts' style, product unboxings or reviews, home tours with no making, DIY fails, rambling vlogs with little work on screen",
+      "minMinutes": 6,
+      "maxMinutes": 25,
+      "perDay": 2,
+      "seedChannels": ["Scott Yu-Jan", "Craighill", "Blacktail Studio", "Ken Kataoka", "Never Too Small", "Studio Flow", "Man Made"],
+      "seedSearches": ["designing a product from scratch", "industrial design process prototype", "making handmade leather shoes", "woodworking build beautiful table", "small apartment design tour architect"]
+    },
+    {
+      "id": "clever-builds",
+      "name": "Clever builds (tight edits)",
+      "type": "stream",
+      "want": "One person or small team engineering a weird or ambitious machine and showing the real problem-solving: CAD, failed prototypes, the fix, the test. Has to keep moving; a clear goal stated early and a payoff by the end.",
+      "avoid": "Videos over 25 minutes, slow multi-part builds, 'I bought X from AliExpress', sponsored gadget showcases, pure destruction or crash videos without engineering",
+      "minMinutes": 6,
+      "maxMinutes": 22,
+      "perDay": 1,
+      "seedChannels": ["Lucas-Dynamics", "Brick Technology", "Integza", "Stuff Made Here", "Michael Reeves", "Tom Stanton", "From Scratch"],
+      "seedSearches": ["I built a machine that", "engineering a lego mechanism", "3d printed engine build", "homemade robot build test", "I engineered a"]
+    },
+    {
+      "id": "science-aha",
+      "name": "Science & math aha",
+      "type": "stream",
+      "want": "One surprising idea in physics, math or how-the-world-works, explained with a demo or clean visuals and a real 'oh, that's why' payoff. Hooky premise in the first minute.",
+      "avoid": "Lecture recordings, homework walkthroughs, slideshow narration, AI-voiceover explainers, conspiracy or pseudo-science, videos longer than 25 minutes",
+      "minMinutes": 5,
+      "maxMinutes": 25,
+      "perDay": 1,
+      "seedChannels": ["Veritasium", "SmarterEveryDay", "Numberphile", "Steve Mould", "Cleo Abram", "3Blue1Brown"],
+      "seedSearches": ["counterintuitive physics experiment", "why does this happen physics explained", "math puzzle with surprising answer", "slow motion science explained"]
+    },
+    {
+      "id": "wild-projects",
+      "name": "Wild projects vlogs",
+      "type": "stream",
+      "want": "A real person filming themselves doing a long hands-on project or adventure in the wild: building a cabin, fixing up machines, camping in odd places, surviving on a budget. Personality-driven, mostly self-shot.",
+      "avoid": "Pure ski or climbing films, gear reviews, survival 'challenges' with fake drama, compilation channels, 'Top 10 survival tips'",
+      "minMinutes": 12,
+      "maxMinutes": 45,
+      "perDay": 1,
+      "seedChannels": ["Outdoor Tom", "Noah Kane", "Barely Camping", "Wranglerstar", "My Self Reliance"],
+      "seedSearches": ["building a cabin alone in the woods", "fixing an old snowmobile alaska", "camping in a strange place", "off grid project vlog"]
+    },
+    {
+      "id": "story-and-craft-of-film",
+      "name": "Storytellers & behind the camera",
+      "type": "stream",
+      "want": "Well-crafted short-form stories from filmmaker-vloggers, plus behind-the-scenes breakdowns of how shots, edits and cinematography were actually done. Either a great story or you learn how a great story is made.",
+      "avoid": "Movie or TV clips, trailer reactions, 'ranking every movie', gear unboxings, prank vlogs, 24-hour challenge videos",
+      "minMinutes": 8,
+      "maxMinutes": 30,
+      "perDay": 1,
+      "seedChannels": ["Casey Neistat", "Dan Mace", "Sticks", "Yes Theory", "Ryan Trahan", "Peter McKinnon"],
+      "seedSearches": ["how we shot this scene behind the scenes", "cinematography breakdown", "making of a short film", "filmmaker vlog story"]
+    },
+    {
+      "id": "small-business",
+      "name": "How small businesses actually work",
+      "type": "stream",
+      "want": "A specific real small business (shop, restaurant, trade, product brand) broken down with real numbers: costs, margins, what went wrong, how the owner fixed it.",
+      "avoid": "Hustle gurus, Hormozi or podcast clips, 'passive income', dropshipping, crypto, 'how I got rich at 22' with no numbers, Lambo or lifestyle flexing, Shark Tank clips",
+      "minMinutes": 8,
+      "maxMinutes": 30,
+      "perDay": 1,
+      "seedChannels": ["Davie Fogarty", "UpFlip", "MoreMozi", "Business Insider"],
+      "seedSearches": ["small business revenue breakdown owner", "how much does a restaurant make", "I tried to save a failing business", "trades business profit margins"]
+    },
+    {
+      "id": "sports-stories",
+      "name": "Sports stories",
+      "type": "stream",
+      "want": "Documentary-style stories about athletes, rivalries and teams (F1, NBA, NFL, table tennis), plus the occasional table tennis technique or pro-player video. Narrative and context, not highlights.",
+      "avoid": "Raw highlight reels, hot-take debate shows, 'Ranking your takes' style, fight knockout compilations, gym-drama roast channels",
+      "minMinutes": 8,
+      "maxMinutes": 30,
+      "perDay": 1,
+      "seedChannels": ["More Than Athletes", "IntoTheFormula", "TheSystematicPlayer", "Orange Spin", "Jef"],
+      "seedSearches": ["the untold story of athlete", "F1 rivalry explained", "table tennis pro story", "how this team built a dynasty"]
+    },
+    {
+      "id": "watch-dealing",
+      "name": "Watch dealing",
+      "type": "stream",
+      "want": "Entertaining watch dealing and flipping: negotiating, authenticating, real buy and sell numbers, plus occasional watch-brand history. Personality plus real money on the line.",
+      "avoid": "Affiliate 'best watches under $X' lists, unboxings, celebrity collection reaction clips, how-to-resize-bracelet tutorials",
+      "minMinutes": 8,
+      "maxMinutes": 30,
+      "perDay": 1,
+      "seedChannels": ["Vookum", "Nico Leonard", "Mr. Watchman"],
+      "seedSearches": ["flipping a rolex profit", "watch dealer negotiation", "is this watch fake dealer", "history of watch brand"]
+    },
+    {
+      "id": "tech-reviews",
+      "name": "Tech, MKBHD-style",
+      "type": "stream",
+      "want": "Polished, well-shot tech videos with a clear point of view about CURRENT products (released or relevant in the last ~12 months) or timeless topics: in-depth reviews, 'why this product matters', design and industry explainers about phones, laptops, cars, gadgets. Honest opinion, explains the tradeoffs, useful to someone deciding what to buy or understanding where tech is going.",
+      "avoid": "Reviews of old products (anything older than ~12 months unless the topic is timeless), unboxing-only videos, rumor and leak roundups, 'iPhone vs Android' fanboy fights, 'Top 10 gadgets under $50', AliExpress hauls, gift guides, AI-voiceover tech news, tutorials and settings tips",
+      "minMinutes": 8,
+      "maxMinutes": 25,
+      "perDay": 1,
+      "seedChannels": ["Marques Brownlee", "Mrwhosetheboss", "optimum", "Linus Tech Tips", "The Verge"],
+      "seedSearches": ["honest review after one month", "the problem with this phone", "why this product failed", "laptop review design", "how this company changed tech"]
+    },
+    {
+      "id": "big-creators-standouts",
+      "name": "Big creators, standouts only",
+      "type": "stream",
+      "want": "Main-channel uploads from a few big creators, only when the video is a genuine standout (strong performance vs their own average, a real project or challenge, not filler). Zero is fine on most days.",
+      "avoid": "Second-channel clips, shorts compilations, sponsored filler, merch drops, collab videos that are mostly another creator's content",
+      "minMinutes": 8,
+      "maxMinutes": 35,
+      "perDay": 1,
+      "seedChannels": ["MrBeast", "Jesse James West", "Magnus Midtbø"],
+      "seedSearches": ["MrBeast new video", "Jesse James West", "Magnus Midtbø"]
+    }
+  ],
+  "globalAvoid": "Shorts of any kind (under 3 minutes or vertical); livestreams and VODs; TV show and movie clips or compilations of any kind (Family Guy, The Office, Parks and Rec, SNL, The Boys, A&E reality like Squatters or Intervention, Bar Rescue, Shark Tank); reaction videos; 'X DESTROYS Y' political or religious debate bait; cringe compilations and roast channels; streamer clip channels and GTA or gaming content; AI-voiceover channels; top-10 lists; get-rich and hustle content; shocked-face clickbait titles with no substance.",
+  "notes": "Main goal is to watch less YouTube overall and eventually replace it, not to find more to watch. Every pick should give me something (skill, idea, story, craft), not just kill time like the TV clips I used to watch. Bingeing happens on empty days. Budget follows Google Calendar: free 75 / normal 30 / busy 20 minutes, holding through Jan 3, 2027, then tapering to floors of 30 / 20 / 15. Quality over filling the quota: if nothing strong comes up, show fewer videos. Goes through phases, so a thread that gets several thumbs-downs in a row should pause itself for a couple of weeks. Prefers videos under ~25 min; long builds feel slow. Loves good-looking, well-filmed design and craft videos. Viewing: clicking a pick opens just that video on its own page (embedded player, no sidebar, no recommendations, no comments, no autoplay; rel=0 and cover the end screen). Never link out to youtube.com's watch page."
+}

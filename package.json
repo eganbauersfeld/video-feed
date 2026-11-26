@@ -1,0 +1,17 @@
+{
+  "name": "video-feed",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "resolve-channels": "node scripts/resolve-channels.mjs",
+    "import-history": "node scripts/import-watch-history.mjs",
+    "assemble": "node scripts/assemble.mjs",
+    "test": "node --test scripts/test/core.test.mjs"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^1.14.0",
+    "node-ical": "^0.27.6",
+    "zod": "^4.6.7"
+  }
+}
