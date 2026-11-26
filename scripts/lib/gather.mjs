@@ -14,7 +14,7 @@ function durationParam(t) {
 // Pick the queries for today, rotating so none repeats within the cooldown when the pool allows.
 export function chooseQueries(thread, qstate, today, cfg) {
   const st = (qstate[thread.id] ??= { learned: [], lastUsed: {} });
-  const pool = [...new Set([...thread.seedSearches, ...st.learned])];
+  const pool = [...new Set([...thread.seedSearches, ...(thread.extraSearches || []), ...st.learned])];
   const combos = pool.flatMap((q) => ORDERS.map((order) => ({ q, order, key: `${q}|${order}` })));
   const age = (c) => (st.lastUsed[c.key] ? daysBetween(st.lastUsed[c.key], today) : Infinity);
   const fresh = combos.filter((c) => age(c) >= cfg.youtube.queryCooldownDays);
@@ -70,10 +70,11 @@ export async function gather({ yt, cfg, threads, today, now, state, isSeen, log 
   };
 
   // 1. Searches (100 units each).
-  const searchHits = {}; // threadId -> Set(videoId)
+  const searchHits = Object.fromEntries(threads.map((t) => [t.id, new Set()])); // threadId -> Set(videoId)
+  const RESERVE = 600; // keep units for details, medians and back catalogs
   outer: for (const t of threads) {
-    searchHits[t.id] = new Set();
     for (const q of chooseQueries(t, qstate, today, cfg)) {
+      if (yt.remaining() - 100 < RESERVE) { log("Searches stopped early to stay under the unit cap"); break outer; }
       try {
         const data = await yt.search({
           q: q.q, order: q.order, maxResults: cfg.youtube.searchMaxResults, publishedAfter,

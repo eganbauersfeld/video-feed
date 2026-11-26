@@ -2,14 +2,14 @@
 import { readJson, writeJson } from "./store.mjs";
 import { fallbackNudgeLines } from "./judge.mjs";
 
-export async function finish({ ctx, result, cfg, log }) {
+export async function finish({ ctx, result, cfg, log, markJudged = true }) {
   const threads = ctx.threads;
   const seen = await readJson("seen.json", {});
   const judged = await readJson("cache/judged.json", {});
   const rosters = await readJson("rosters.json", {});
   const queries = await readJson("queries.json", {});
 
-  // Join picks with metadata, best first; ties alternate threads so one thread can't crowd the top.
+  // Join picks with metadata; rank = position within its own thread.
   const rows = [];
   for (const t of threads) {
     const cands = Object.fromEntries((ctx.candidates[t.id] || []).map((c) => [c.videoId, c]));
@@ -23,10 +23,12 @@ export async function finish({ ctx, result, cfg, log }) {
       });
     });
   }
-  rows.sort((a, b) => b.score - a.score || a.rank - b.rank);
+  // Round-robin across threads: every thread's best pick comes before any thread's second pick,
+  // so the part of the list the budget covers spans several threads. Within a round, best score first.
+  rows.sort((a, b) => a.rank - b.rank || b.score - a.score);
 
   const nudge = ctx.nudge
-    ? { id: ctx.nudge.id, minutes: ctx.nudge.minutes, lines: result.nudgeLines || fallbackNudgeLines(ctx.nudge, ctx.warnMinutesLeft) }
+    ? { id: ctx.nudge.id, minutes: ctx.nudge.minutes, lines: result.nudgeLines || fallbackNudgeLines(ctx.nudge, ctx.warnMinutesLeft, ctx.weather, ctx.today) }
     : null;
 
   const feed = {
@@ -41,7 +43,8 @@ export async function finish({ ctx, result, cfg, log }) {
   };
 
   for (const r of rows) seen[r.videoId] = ctx.today;
-  for (const list of Object.values(ctx.candidates)) for (const c of list) judged[c.videoId] = ctx.today;
+  // AI judges are not re-asked about a rejected video for 30 days. The rules judge is free, so it re-checks daily.
+  if (markJudged) for (const list of Object.values(ctx.candidates)) for (const c of list) judged[c.videoId] = ctx.today;
   for (const [id, d] of Object.entries(judged)) if (Date.parse(ctx.today) - Date.parse(d) > 45 * 86400e3) delete judged[id];
 
   for (const r of rows) {

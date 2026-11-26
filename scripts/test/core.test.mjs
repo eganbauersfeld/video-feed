@@ -162,3 +162,35 @@ END:VCALENDAR`;
     server.close();
   }
 });
+
+import { judgeWithRules } from "../lib/rules-judge.mjs";
+
+test("rules judge: topic, blocks, trust, seedOnly, one per channel", () => {
+  const threads = [
+    { id: "a", name: "A", perDay: 2 },
+    { id: "b", name: "B", perDay: 1 },
+  ];
+  const rules = {
+    threshold: 3.5, globalBlock: ["reaction"], clickbait: ["insane"],
+    threads: { a: { boost: ["cabin"], block: ["tips"] }, b: { seedOnly: true, minRatio: 1.5, boost: [] } },
+  };
+  const v = (videoId, title, channelId, ratio, description = "") =>
+    ({ videoId, title, channelId, channel: channelId, ratio, seconds: 600, source: "search", description });
+  const candidates = {
+    a: [
+      v("onTopic", "Building a cabin alone", "stranger1", 2),
+      v("offTopic", "My morning routine", "stranger2", 5),
+      v("blocked", "Cabin reaction video", "stranger3", 5),
+      v("tips", "10 cabin tips", "stranger4", 5),
+      v("seedLinkOnly", "Journaling ideas", "seed", 5, "My cabin kit: https://amzn.to/x"),
+      v("sameChannel", "Another cabin build", "stranger1", 3),
+    ],
+    b: [v("notSeed", "Big video", "other", 5), v("seedLow", "Filler", "seedB", 1.1), v("seedHit", "Standout", "seedB", 4)],
+  };
+  const { picks } = judgeWithRules({
+    threads, candidates, rules, seedIds: { a: ["seed"], b: ["seedB"] }, rosters: {}, today: "2026-11-25",
+  });
+  assert.equal(picks.a.length, 1); // one per channel: only the best stranger1 video
+  assert.ok(["onTopic", "sameChannel"].includes(picks.a[0].videoId));
+  assert.deepEqual(picks.b.map((p) => p.videoId), ["seedHit"]);
+});

@@ -55,8 +55,11 @@ export default {
   },
 
   judge: {
-    mode: "api", // "api" (Anthropic API, needs ANTHROPIC_API_KEY) or "offline" (scheduled Claude Code session)
-    model: "claude-opus-5-5", // "claude-haiku-5-5" is ~40x cheaper; see README
+    // "rules"   free, no AI: keyword lists in rules.json + channel trust + view performance
+    // "api"     Anthropic API (needs ANTHROPIC_API_KEY, costs money)
+    // "offline" a scheduled Claude Code session judges candidates.json
+    mode: "rules",
+    model: "claude-opus-5-5", // only used by "api"
     effort: "low",
     maxCandidatesPerThread: 30,
     descriptionChars: 500,

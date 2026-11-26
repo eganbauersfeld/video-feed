@@ -20,10 +20,17 @@ Every day at about 5am Denver time, the **Refresh feed** GitHub Action runs `scr
    - videos outside the thread's length range
    - videos under 0.5× their channel's median views, adjusted for how old the video is
    - anything already shown or already in my watch history
-5. **Judge.** Claude reads each thread's candidates against its want/avoid lists and picks only the ones that are worth it. Each pick gets a "why this" line. Fewer picks, or none, is fine.
-6. **Nudge.** Picks one "do this instead" suggestion from `nudges.json`, matched to the weather, my location and my biggest free block of time. The same suggestion never repeats within 30 days.
-7. **Learn.** A channel with 3 accepted picks in a thread joins that thread's roster (`rosters.json`).
-8. Commits `feed.json` and the state files, and GitHub Pages serves the page.
+5. **Judge.** By default this is the free **rules judge** (no AI). It scores each candidate on:
+   - channel trust: a seed channel, a roster channel, or a stranger
+   - performance against the channel's own median views
+   - whether the title matches the thread's topic words in `rules.json`. Strangers have to match by title; trusted channels can match by description.
+   - clickbait signals: ALL CAPS, "!!", emoji, words like "insane"
+
+   It drops anything that hits a block word and keeps the best that clear a threshold, with one video per channel per day. Fewer picks, or none, is fine.
+6. **Mix.** The feed lists every thread's best pick before any thread's second pick, so the minutes you actually watch span several threads.
+7. **Nudge.** Picks one "do this instead" suggestion from `nudges.json`, matched to the weather, my location and my biggest free block of time. The same suggestion never repeats within 30 days.
+8. **Learn.** A channel with 3 accepted picks in a thread joins that thread's roster (`rosters.json`).
+9. Commits `feed.json` and the state files, and GitHub Pages serves the page.
 
 ### API units per day
 
@@ -46,6 +53,7 @@ Every day at about 5am Denver time, the **Refresh feed** GitHub Action runs `scr
 |---|---|
 | `config.mjs` | Every tunable number: budgets, taper, location, unit cap, judge model |
 | `threads.json` | The threads: want/avoid, length range, picks per day, seeds |
+| `rules.json` | Rules judge: topic words, block words and extra searches per thread, plus the global block list |
 | `nudges.json` | "Do this instead" ideas |
 | `channels.json` | Seed channel names resolved to IDs (`npm run resolve-channels`) |
 | `feed.json` | Today's feed (what the page reads) |
@@ -71,7 +79,7 @@ Every day at about 5am Denver time, the **Refresh feed** GitHub Action runs `scr
 
 Treat these like passwords: anyone with the address can read that calendar. If one leaks, use **Reset** on the same settings page.
 
-### 3. Anthropic API key → `ANTHROPIC_API_KEY` (API judge only)
+### 3. Anthropic API key → `ANTHROPIC_API_KEY` (only if you switch to the paid API judge)
 
 1. Go to https://console.anthropic.com and sign in.
 2. Add a payment method or credits under **Billing**. Set a monthly spend limit there too (e.g. $20).
@@ -83,7 +91,6 @@ In PowerShell, run each command and paste the value when asked. Input is hidden.
 
 ```powershell
 gh secret set GCAL_ICS_URL --repo eganbauersfeld/video-feed
-gh secret set ANTHROPIC_API_KEY --repo eganbauersfeld/video-feed
 ```
 
 Or use the website: repo **Settings → Secrets and variables → Actions → New repository secret**.
@@ -107,21 +114,22 @@ So nothing I've already seen gets picked:
 
 The repo is public, so the raw history never goes in it. Only keyed hashes do, and they can't be checked against video IDs without the secret.
 
-## Judge: API or offline
+## Judges
 
 Set `judge.mode` in `config.mjs`.
 
-- **`api` (default):** the Action calls the Anthropic API directly. With about 150 candidates a day (roughly 40k input tokens, 10–25k output):
-  - `claude-opus-5-5` (default): about **$0.35–0.75 a day**, roughly $10–20 a month
-  - `claude-sonnet-5-5`: about **$0.15–0.35 a day**
-  - `claude-haiku-5-5`: about **$0.01–0.02 a day**
+- **`rules` (default, free):** no AI. Tune it in `rules.json`:
+  - Add a word to a thread's `block` list when junk gets through.
+  - Add to `boost` when good videos are missed.
+  - Raise `threshold` to get fewer, safer picks.
 
-  The Action log prints the actual tokens and cost each run.
-- **`offline`:** the Action writes `candidates.json` and stops. A scheduled Claude Code routine judges it on my Claude plan, with no API bill (see [OFFLINE_JUDGE.md](OFFLINE_JUDGE.md)), and commits `picks.json`. Then the **Assemble feed** workflow builds `feed.json`. There are more moving parts: if the routine doesn't run, there's no feed that day.
+  To see what it would pick from the cached back catalogs without using any API quota, run `node scripts/test/rules-preview.mjs`.
+- **`api`:** Claude judges each video against the want/avoid text and writes the "why" lines. It's much better at taste (spotting filler, AI-voiceover channels, old-product reviews) and costs about $0.35–0.75 a day on `claude-opus-5-5`, or about $0.01–0.02 on `claude-haiku-5-5`. It needs `ANTHROPIC_API_KEY`.
+- **`offline`:** like `api`, but a scheduled Claude Code routine does the judging on a Claude plan, with no API bill. See [OFFLINE_JUDGE.md](OFFLINE_JUDGE.md).
 
 ## Later (not built yet)
 
-- 👍 / 👎 and "less like this" on each pick, and muting a thread
+- 👍 / 👎 and "less like this" on each pick, and muting a thread (this would help the rules judge most)
 - Auto-pausing a thread for two weeks after several thumbs-downs in a row
 - Course threads: an ordered path, one step a day
 - Syncing watch time across devices (it's per-device for now)

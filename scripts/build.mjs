@@ -13,6 +13,7 @@ import { loadSeenChecker } from "./lib/history.mjs";
 import { pickNudge, targetSlot } from "./lib/nudges.mjs";
 import { judgeWithApi, cleanPicks, SYSTEM, NUDGE_SYSTEM, threadPrompt, nudgePrompt } from "./lib/judge.mjs";
 import { finish } from "./lib/finish.mjs";
+import { judgeWithRules } from "./lib/rules-judge.mjs";
 
 const log = (...a) => console.log(...a);
 const mode = process.env.JUDGE || cfg.judge.mode;
@@ -40,7 +41,8 @@ try { weather = await todayWeather(cfg, today); } catch (e) { log(`Weather unava
 
 // c-d) Gather and hard-filter
 const threadsFile = await readJson("threads.json");
-const threads = threadsFile.threads;
+const rules = await readJson("rules.json", { threads: {} });
+const threads = threadsFile.threads.map((t) => ({ ...t, extraSearches: rules.threads?.[t.id]?.moreSearches || [] }));
 const channels = await readJson("channels.json", {});
 const seedIds = Object.fromEntries(threads.map((t) => [t.id, t.seedChannels.map((n) => channels[n]?.id).filter(Boolean)]));
 const state = {
@@ -71,7 +73,7 @@ log(`Nudge: ${nudge ? nudge.id : "none eligible"} (${slot})`);
 const ctx = {
   today, now, dayType, eventCount: cal.ok ? cal.eventCount : null, budgetMinutes, weather, nudge,
   warnMinutesLeft: Math.max(1, Math.round(budgetMinutes * 0.2)),
-  threads, candidates, seedIds,
+  threads: threads.map(({ extraSearches, ...t }) => t), candidates, seedIds,
   globalAvoid: threadsFile.globalAvoid, notes: threadsFile.notes, descriptionChars: cfg.judge.descriptionChars,
   queriesFor: (id) => [...new Set([...(threads.find((t) => t.id === id)?.seedSearches || []), ...(state.qstate[id]?.learned || [])])],
 };
@@ -93,7 +95,9 @@ if (mode === "offline") {
   log("Offline mode: wrote candidates.json; waiting for picks.json");
 } else {
   let result;
-  if (mode === "stub") {
+  if (mode === "rules") {
+    result = judgeWithRules({ threads, candidates, rules, seedIds, rosters: state.rosters, today });
+  } else if (mode === "stub") {
     // Test-only: no Claude, just the top ratios. Never use for the real feed.
     result = { picks: {}, newSearches: {}, nudgeLines: null };
     for (const t of threads) {
@@ -106,5 +110,5 @@ if (mode === "offline") {
     const cost = (result.usage.input * p[0] + result.usage.output * p[1]) / 1e6;
     log(`Claude tokens: ${result.usage.input} in / ${result.usage.output} out (~$${cost.toFixed(3)})`);
   }
-  await finish({ ctx, result, cfg, log });
+  await finish({ ctx, result, cfg, log, markJudged: mode === "api" });
 }

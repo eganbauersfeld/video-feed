@@ -72,9 +72,17 @@ Today: ${ctx.dayType} day; weather in ${ctx.weather?.label ?? "town"}: ${ctx.wea
 Minutes left at the warn point: ${ctx.warnMinutesLeft}.`;
 }
 
-export function fallbackNudgeLines(n, warnMinutesLeft) {
+// Template wording (no AI). Varies by day so the same idea doesn't always read the same way.
+export function fallbackNudgeLines(n, warnMinutesLeft, weather, today = "") {
   const t = n.text.replace(/[.!?]$/, "");
-  return { normal: `${t}?`, warn: `${warnMinutesLeft} min left. ${t} after this one?`, done: `${t}.` };
+  const lower = t[0].toLowerCase() + t.slice(1);
+  const pick = (arr) => arr[[...today].reduce((a, ch) => a + ch.charCodeAt(0), n.id.length) % arr.length];
+  const sky = weather && n.tags.includes("good-weather") ? `It's ${weather.high}° and ${weather.condition}. ` : "";
+  return {
+    normal: sky + pick([`${t}?`, `Idea for today: ${lower}.`, `Instead of another video: ${lower}.`]),
+    warn: `${warnMinutesLeft} min left. ` + pick([`${t} after this one?`, `Then ${lower}.`, `After this, ${lower}?`]),
+    done: sky + pick([`${t}.`, `That's today's videos. ${t}.`, `Screen's done for today. ${t}.`]),
+  };
 }
 
 // Keeps only valid, de-duplicated picks within perDay, best first.

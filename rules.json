@@ -1,0 +1,67 @@
+{
+  "_help": "Used by the rules judge (judge.mode = \"rules\"). Terms match whole words, case-insensitive. 'boost' terms in a title raise the score; 'block' terms in the title or start of the description reject the video. 'moreSearches' are added to the thread's search rotation.",
+  "threshold": 3.5,
+  "globalBlock": [
+    "#shorts", "shorts", "livestream", "live stream", "vod", "full episode", "episode", "trailer", "clips", "compilation",
+    "family guy", "the office", "parks and rec", "snl", "saturday night live", "the boys", "squatters", "intervention", "bar rescue", "shark tank",
+    "reaction", "reacts", "react to", "reacting", "destroys", "destroyed by", "debate", "cringe", "roast", "roasted",
+    "gta", "minecraft", "fortnite", "roblox", "stream highlights", "twitch",
+    "top 10", "top ten", "top 5", "tier list", "get rich", "passive income", "side hustle", "dropshipping", "crypto", "ai voice"
+  ],
+  "clickbait": ["you won't believe", "gone wrong", "shocking", "exposed", "insane", "unbelievable", "crazy", "must see", "won't believe", "the truth about"],
+  "threads": {
+    "design-craft": {
+      "boost": ["design", "designing", "designed", "industrial design", "product design", "prototype", "handmade", "hand made", "making", "made", "build", "building", "built", "woodworking", "table", "chair", "furniture", "leather", "leatherwork", "shoes", "shoemaking", "boots", "wallet", "bag", "apartment", "micro apartment", "small space", "architect", "architecture", "cabinet", "desk", "lamp", "process", "from scratch", "craft", "studio", "workshop"],
+      "block": ["hack", "hacks", "5-minute", "5 minute crafts", "diy fails", "unboxing", "haul", "vlog"],
+      "moreSearches": ["making a chair start to finish", "designing a lamp from sketch to prototype", "handmade leather wallet process", "architect designs tiny apartment"]
+    },
+    "clever-builds": {
+      "boost": ["built", "build", "building", "engineered", "engineering", "machine", "robot", "mechanism", "prototype", "cad", "3d printed", "3d print", "3d printing", "motor", "engine", "lego", "invention", "invented", "rocket", "drone", "i made", "designed", "automatic", "contraption"],
+      "block": ["aliexpress", "temu", "amazon", "unboxing", "crash test", "destruction", "destroying", "smashing", "part 2", "part 3", "part 4", "sponsored"],
+      "moreSearches": ["I made a machine that", "building a robot that can", "lego machine engineering challenge", "3d printed mechanism invention"]
+    },
+    "science-aha": {
+      "boost": ["physics", "math", "maths", "mathematics", "science", "experiment", "paradox", "puzzle", "equation", "slow motion", "illusion", "proof", "counterintuitive", "theorem", "quantum", "gravity", "fluid", "probability", "geometry", "infinity", "chaos", "optics", "magnet", "magnets"],
+      "block": ["lecture", "lesson", "homework", "class", "full course", "tutorial", "conspiracy", "flat earth", "ancient aliens", "exam"],
+      "moreSearches": ["the paradox that confused mathematicians", "physics demo that looks impossible", "why this experiment works"]
+    },
+    "wild-projects": {
+      "boost": ["cabin", "off grid", "off-grid", "alaska", "woods", "forest", "wilderness", "camping", "camp", "homestead", "building", "built", "snowmobile", "truck", "restoring", "restore", "fixing", "abandoned", "solo", "alone", "tiny house", "boat", "shelter", "bushcraft", "mountain", "winter"],
+      "block": ["top 10", "tips", "gear review", "challenge", "24 hours", "ski film", "climbing film", "asmr"],
+      "moreSearches": ["building an off grid cabin alone", "restoring an abandoned truck in the woods", "winter camping in a homemade shelter"]
+    },
+    "story-and-craft-of-film": {
+      "boost": ["behind the scenes", "bts", "cinematography", "how we shot", "how i shot", "how we made", "making of", "short film", "filmmaking", "filmmaker", "editing", "film", "story", "documentary", "shot on", "camera", "director"],
+      "block": ["ranking", "every movie", "unboxing", "prank", "pranks", "24 hours", "movie review", "box office", "explained ending", "ending explained"],
+      "moreSearches": ["how this one take shot was filmed", "editing breakdown of a short film", "filmmaker tells a story in one day"]
+    },
+    "small-business": {
+      "boost": ["business", "restaurant", "shop", "store", "revenue", "profit", "profits", "margins", "costs", "owner", "bakery", "cafe", "coffee shop", "brand", "plumber", "electrician", "how much does", "small business", "failing", "factory", "makes", "food truck", "per year"],
+      "block": ["hormozi", "millionaire", "lambo", "podcast", "guru", "make money online", "get rich", "how i got rich", "financial freedom", "passive"],
+      "moreSearches": ["how much money does a coffee shop make", "running a small bakery real numbers", "food truck owner revenue breakdown"]
+    },
+    "sports-stories": {
+      "boost": ["story", "untold", "rivalry", "documentary", "history", "dynasty", "legend", "career", "rise", "fall", "f1", "formula 1", "nba", "nfl", "table tennis", "ping pong", "explained", "how", "why"],
+      "block": ["highlights", "highlight", "hot take", "first take", "undisputed", "knockout", "knockouts", "ranking", "reacts", "predictions", "live score"],
+      "moreSearches": ["the story behind F1's greatest rivalry", "untold story of an NBA legend", "how table tennis pros train"]
+    },
+    "watch-dealing": {
+      "boost": ["watch", "watches", "rolex", "omega", "patek", "audemars", "cartier", "seiko", "dealer", "flip", "flipping", "profit", "fake", "authentic", "negotiation", "negotiating", "buying", "selling", "brand", "history", "deal"],
+      "block": ["best watches under", "under $", "unboxing", "celebrity", "resize", "sizing", "how to"],
+      "moreSearches": ["watch dealer buying a rolex", "is this rolex real or fake", "how this watch brand started"]
+    },
+    "tech-reviews": {
+      "boost": ["review", "reviewed", "after one month", "long term", "honest", "the problem with", "impressions", "phone", "iphone", "pixel", "galaxy", "laptop", "macbook", "tablet", "ipad", "headphones", "camera", "ev", "car", "design", "explained", "company", "failed", "why"],
+      "block": ["unboxing", "rumor", "rumors", "leak", "leaks", "leaked", "under $", "gift guide", "aliexpress", "haul", "tips", "tricks", "settings", "how to", "tutorial", "hidden features"],
+      "blockOldYears": true,
+      "moreSearches": ["long term review this year", "why this laptop matters", "the best designed phone right now"]
+    },
+    "big-creators-standouts": {
+      "seedOnly": true,
+      "minRatio": 1.5,
+      "boost": [],
+      "block": ["merch", "second channel", "podcast", "clips"],
+      "moreSearches": []
+    }
+  }
+}
