@@ -7,10 +7,15 @@
     {
       "id": "new-restaurant",
       "date": "2026-11-26"
+    },
+    {
+      "id": "sketch-product",
+      "date": "2026-11-27"
     }
   ],
   "cycle": [
     "sunset",
-    "new-restaurant"
+    "new-restaurant",
+    "sketch-product"
   ]
 }

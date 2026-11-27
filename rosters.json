@@ -2,7 +2,7 @@
   "design-craft": {
     "UC_zQ777U6YTyatP3P1wi3xw": {
       "name": "NEVER TOO SMALL",
-      "accepted": 2,
+      "accepted": 3,
       "rostered": false
     },
     "UCc6L2C09Gs6euMoUyqiz02Q": {
@@ -19,28 +19,28 @@
   "design-ideas": {
     "UCFzr6ae9Uv-a_tCmHmkw49g": {
       "name": "Eric Strebel",
-      "accepted": 2,
+      "accepted": 3,
       "rostered": false
     }
   },
   "claude-building": {
     "UCrDwWp7EBBv4NwvScIpBDOA": {
       "name": "Anthropic",
-      "accepted": 2,
+      "accepted": 3,
       "rostered": false
     }
   },
   "business-strategy": {
     "UCgNg3vwj3xt7QOrcIDaHdFg": {
       "name": "PolyMatter",
-      "accepted": 2,
+      "accepted": 3,
       "rostered": false
     }
   },
   "wild-projects": {
     "UCIiu3VznvR_JL4GLtTVHQgw": {
       "name": "Noah Kane",
-      "accepted": 1,
+      "accepted": 2,
       "rostered": false
     },
     "UCMIjEnXruVHtvgSVf6TgfUg": {
@@ -54,12 +54,17 @@
       "name": "TheSystematicPlayer",
       "accepted": 2,
       "rostered": false
+    },
+    "UCAQT5PJUvzCz-OXSiRcF1iQ": {
+      "name": "More Than Athletes",
+      "accepted": 1,
+      "rostered": false
     }
   },
   "watch-dealing": {
     "UCv2sL-VAAMN8piWatCR_SdA": {
       "name": "Mr. Watchman",
-      "accepted": 2,
+      "accepted": 3,
       "rostered": false
     }
   },
@@ -73,12 +78,22 @@
       "name": "Alexander'sLaboratory",
       "accepted": 1,
       "rostered": false
+    },
+    "UCDB_E_nUM5rLplQKgkibFNg": {
+      "name": "SECTOR 07",
+      "accepted": 1,
+      "rostered": false
     }
   },
   "science-aha": {
     "UC6107grRI4m0o2-emgoDnAA": {
       "name": "SmarterEveryDay",
       "accepted": 2,
+      "rostered": false
+    },
+    "UCoxcjq-8xIDTYp3uz647V5A": {
+      "name": "Numberphile",
+      "accepted": 1,
       "rostered": false
     }
   },
@@ -94,11 +109,21 @@
       "name": "Dead Sound",
       "accepted": 1,
       "rostered": false
+    },
+    "UCVun3IyFIh6AsEMV11zlVHg": {
+      "name": "Sticks",
+      "accepted": 1,
+      "rostered": false
     }
   },
   "tech-reviews": {
     "UCgDqL4yzXb4BflimZaxL4Vg": {
       "name": "Andrew Ethan Zeng",
+      "accepted": 1,
+      "rostered": false
+    },
+    "UCZ9ve2-MwPBB5M02ZbMN8Kw": {
+      "name": "HansTechTalk",
       "accepted": 1,
       "rostered": false
     }
